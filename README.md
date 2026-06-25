@@ -1,6 +1,6 @@
 # Image Cryptography using Deep Learning
 
-A neural network-based approach to image encryption and decryption using deep learning. This project implements an end-to-end trainable system that can encrypt images with a key and decrypt them back to the original form.
+This project explores an experimental deep learning-based framework for image encryption and decryption, where neural networks learn key-conditioned transformations to securely map plaintext images into encrypted representations and reconstruct them back with the correct key. The work investigates the feasibility of learned cryptographic transformations and evaluates their robustness using reconstruction and security metrics.
 
 ## Features
 
@@ -72,12 +72,27 @@ The system uses two neural networks:
 
 Both networks use encoder-decoder architecture with residual blocks and key-conditioned transformations.
 
+**Security Intuition**:
+
+The encryption process is conditioned on a secret key, ensuring that the output cipher image depends strongly on key variations. A small change in the key should result in significantly different encrypted outputs, while decryption with an incorrect key should fail to reconstruct the original image. This behavior is evaluated using PSNR, SSIM, and correlation analysis.
+
 ## Expected Results
 
 After training:
 - **Reconstruction PSNR**: > 30 dB
 - **Encryption Correlation**: < 0.1  
 - **Wrong Key PSNR**: < 15 dB
+
+## Limitations
+
+This framework is experimental and does not claim to replace standard cryptographic algorithms such as AES or RSA. The focus is on exploring learned transformations rather than formally proven security guarantees.
+
+## Future Work
+
+* Integration with traditional cryptographic primitives such as AES
+* Analysis against adversarial and brute-force attacks
+* Extension to video encryption
+* Exploration of post-quantum secure learned encryption frameworks
 
 ## License
 
